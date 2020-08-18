@@ -40,6 +40,22 @@ fi
 
 echo $USER > /tmp/currentuser
 
+rm -rf /tmp/rootscript.sh
+cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
+mkdir ~/.cargo
+cat > ~/.cargo/config <<EOF
+[source.crates-io]
+registry = "https://github.com/rust-lang/crates.io-index"
+replace-with = 'ustc'
+[source.ustc]
+registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+EOF
+ENDOFROOTSCRIPT
+
+chmod a+x /tmp/rootscript.sh
+/tmp/rootscript.sh
+rm -rf /tmp/rootscript.sh
+
 mkdir /opt/rustc-1.45.2             &&
 ln -svfin rustc-1.45.2 /opt/rustc
 
