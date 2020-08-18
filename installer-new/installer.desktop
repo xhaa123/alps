@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Installer
+GenericName=AryaLinux Installer
+X-GNOME-FullName=AryaLinux Installer
+Comment=Install AryaLinux into the hard disk
+Exec=/opt/installer-new/installer.py
+Icon=aryalinux
+Terminal=false
+Type=Application
+Categories=GNOME;System;Filesystem;
+Keywords=Partition;
+StartupNotify=true

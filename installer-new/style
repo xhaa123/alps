@@ -1,0 +1,28 @@
+#intro-label
+{
+	font-family: 'Source Sans Pro';
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+#header_label
+{
+	font-family: 'Source Sans Pro';
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+#warn
+{
+	color: #ff0000;
+}
+
+#note-message
+{
+	color: #0000ff;
+}
+
+#grid11
+{
+	background-color: #ff0000
+}
