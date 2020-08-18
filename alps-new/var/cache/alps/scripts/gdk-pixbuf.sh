@@ -11,7 +11,6 @@ set +h
 #REQ:libjpeg
 #REQ:libpng
 #REQ:shared-mime-info
-#REQ:librsvg
 #REQ:libtiff
 #REQ:x7lib
 
