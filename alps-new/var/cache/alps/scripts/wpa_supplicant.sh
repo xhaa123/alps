@@ -9,6 +9,7 @@ set +h
 
 #REQ:desktop-file-utils
 #REQ:libnl
+#REQ:qt5
 
 
 cd $SOURCE_DIR
@@ -37,6 +38,14 @@ if [ ! -z $URL ]; then
 fi
 
 echo $USER > /tmp/currentuser
+
+if ! grep -ri "/opt/qt5/lib" /etc/ld.so.conf &> /dev/null; then
+        echo "/opt/qt5/lib" | tee -a /etc/ld.so.conf
+        ldconfig
+fi
+
+ldconfig
+. /etc/profile.d/qt5.sh
 
 cat > wpa_supplicant/.config << "EOF"
 CONFIG_BACKEND=file
@@ -75,6 +84,11 @@ EOF
 cd wpa_supplicant &&
 make BINDIR=/sbin LIBDIR=/lib
 
+pushd wpa_gui-qt4 &&
+qmake wpa_gui.pro &&
+make &&
+popd
+
 rm -rf /tmp/rootscript.sh
 cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
 install -v -m755 wpa_{cli,passphrase,supplicant} /sbin/ &&
@@ -102,15 +116,6 @@ install -v -m644 dbus/fi.w1.wpa_supplicant1.service \
 install -v -d -m755 /etc/dbus-1/system.d &&
 install -v -m644 dbus/dbus-wpa_supplicant.conf \
                  /etc/dbus-1/system.d/wpa_supplicant.conf
-ENDOFROOTSCRIPT
-
-chmod a+x /tmp/rootscript.sh
-/tmp/rootscript.sh
-rm -rf /tmp/rootscript.sh
-
-rm -rf /tmp/rootscript.sh
-cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
-systemctl enable wpa_supplicant
 ENDOFROOTSCRIPT
 
 chmod a+x /tmp/rootscript.sh

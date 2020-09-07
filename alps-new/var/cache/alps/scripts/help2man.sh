@@ -7,7 +7,7 @@ set +h
 . /var/lib/alps/functions
 . /etc/alps/directories.conf
 
-#REQ:perl-modules#perl-locale-gettext
+#REQ:perl-locale-gettext
 
 cd $SOURCE_DIR
 

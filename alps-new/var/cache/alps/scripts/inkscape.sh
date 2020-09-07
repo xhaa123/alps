@@ -21,8 +21,8 @@ set +h
 #REQ:lcms
 #REQ:libcanberra
 #REQ:potrace
-#REQ:python-modules#lxml
-#REQ:python-modules#scour
+#REQ:python-lxml
+#REQ:python-scour
 #REQ:gtk2
 #REQ:gtk3
 

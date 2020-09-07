@@ -8,7 +8,7 @@ set +h
 . /etc/alps/directories.conf
 
 #REQ:pcre2
-#REQ:python-modules#pygments
+#REQ:python-pygments
 
 
 cd $SOURCE_DIR

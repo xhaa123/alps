@@ -17,7 +17,7 @@ set +h
 #REQ:newt
 #REQ:nss
 #REQ:polkit
-#REQ:python-modules#pygobject3
+#REQ:python-pygobject3
 #REQ:systemd
 #REQ:upower
 #REQ:vala
@@ -119,32 +119,8 @@ rm -rf /tmp/rootscript.sh
 
 rm -rf /tmp/rootscript.sh
 cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
-cat > /etc/NetworkManager/conf.d/dhcp.conf << "EOF"
-[main]
-dhcp=dhclient
-EOF
-ENDOFROOTSCRIPT
-
-chmod a+x /tmp/rootscript.sh
-/tmp/rootscript.sh
-rm -rf /tmp/rootscript.sh
-
-rm -rf /tmp/rootscript.sh
-cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
-cat > /etc/NetworkManager/conf.d/no-dns-update.conf << "EOF"
-[main]
-dns=none
-EOF
-ENDOFROOTSCRIPT
-
-chmod a+x /tmp/rootscript.sh
-/tmp/rootscript.sh
-rm -rf /tmp/rootscript.sh
-
-rm -rf /tmp/rootscript.sh
-cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
 groupadd -fg 86 netdev &&
-/usr/sbin/usermod -a -G netdev <username>
+/usr/sbin/usermod -a -G netdev $(cat /tmp/currentuser)
 
 cat > /usr/share/polkit-1/rules.d/org.freedesktop.NetworkManager.rules << "EOF"
 polkit.addRule(function(action, subject) {

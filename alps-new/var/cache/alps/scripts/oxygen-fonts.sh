@@ -8,6 +8,7 @@ set +h
 . /etc/alps/directories.conf
 
 #REQ:cmake
+#REQ:qt5
 
 cd $SOURCE_DIR
 
@@ -39,7 +40,7 @@ echo $USER > /tmp/currentuser
 mkdir build &&
 cd    build &&
 
-cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+cmake -DCMAKE_INSTALL_PREFIX=/usr -QT_INSTALL_PREFIX=/opt/qt5 ..
 
 rm -rf /tmp/rootscript.sh
 cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"

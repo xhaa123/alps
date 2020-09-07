@@ -26,9 +26,8 @@ set +h
 #REQ:gsettings-desktop-schemas
 #REQ:libdbusmenu-qt
 #REQ:libcanberra
-#REQ:x7driver#libinput
+#REQ:libinput
 #REQ:linux-pam
-#REQ:lm_sensors
 #REQ:oxygen-icons5
 #REQ:pciutils
 
@@ -58,6 +57,14 @@ if [ ! -z $URL ]; then
 fi
 
 echo $USER > /tmp/currentuser
+
+if ! grep -ri "/opt/qt5/lib" /etc/ld.so.conf &> /dev/null; then
+        echo "/opt/qt5/lib" | tee -a /etc/ld.so.conf
+        ldconfig
+fi
+
+ldconfig
+. /etc/profile.d/qt5.sh
 
 url=http://download.kde.org/stable/plasma/5.18.5/
 
@@ -112,16 +119,6 @@ d7084769f2aee6f41d723d85645b9832  plasma-vault-5.18.5.tar.xz
 #af6d01e56794acc9ca9e721064878133  plasma-phone-components-5.18.5.tar.xz
 EOF
 
-as_root()
-{
-  if   [ $EUID = 0 ];        then $*
-  elif [ -x /usr/bin/sudo ]; then sudo $*
-  else                            su -c \\"$*\\"
-  fi
-}
-
-export -f as_root
-
 while read -r line; do
 
     # Get the file name, ignoring comments and blank lines
@@ -154,8 +151,8 @@ while read -r line; do
          ;;
        esac
 
-       mkdir build
-       cd    build
+       mkdir plasma-build
+       cd    plasma-build
 
        cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
              -DCMAKE_BUILD_TYPE=Release         \
@@ -163,12 +160,12 @@ while read -r line; do
              -Wno-dev ..  &&
 
         make
-        as_root make install
+        make install
     popd
 
 
-    as_root rm -rf $packagedir
-    as_root /sbin/ldconfig
+    rm -rf $packagedir
+    /sbin/ldconfig
 
     echo $file >> /tmp/plasma-done
 
@@ -217,15 +214,6 @@ account include system-account
 
 # End /etc/pam.d/kscreensaver
 EOF
-ENDOFROOTSCRIPT
-
-chmod a+x /tmp/rootscript.sh
-/tmp/rootscript.sh
-rm -rf /tmp/rootscript.sh
-
-rm -rf /tmp/rootscript.sh
-cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
-sed '/^Name=/s/Plasma/Plasma on Xorg/' -i /usr/share/xsessions/plasma.desktop
 ENDOFROOTSCRIPT
 
 chmod a+x /tmp/rootscript.sh

@@ -16,8 +16,8 @@ set +h
 #REQ:gpgme
 #REQ:libxslt
 #REQ:linux-pam
-#REQ:perl-modules#perl-parse-yapp
-#REQ:python-modules#pycryptodome
+#REQ:perl-parse-yapp
+#REQ:python-pycryptodome
 #REQ:openldap
 
 

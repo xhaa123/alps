@@ -13,7 +13,7 @@ set +h
 #REQ:gobject-introspection
 #REQ:gtk3
 #REQ:libgudev
-#REQ:x7driver#libinput
+#REQ:libinput
 #REQ:libxkbcommon
 #REQ:wayland
 

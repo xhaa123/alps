@@ -10,7 +10,7 @@ set +h
 #REQ:gobject-introspection
 #REQ:gtk3
 #REQ:libxml2
-#REQ:python-modules#pygobject3
+#REQ:python-pygobject3
 
 cd $SOURCE_DIR
 

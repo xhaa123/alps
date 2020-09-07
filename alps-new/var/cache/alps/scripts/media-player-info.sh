@@ -7,11 +7,6 @@ set +h
 . /var/lib/alps/functions
 . /etc/alps/directories.conf
 
-#REQ:yasm
-#REQ:gtk2
-#REQ:gtk3
-#REQ:x7driver#libvdpau-va-gl
-
 
 cd $SOURCE_DIR
 
@@ -46,56 +41,6 @@ make
 rm -rf /tmp/rootscript.sh
 cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
 make install
-ENDOFROOTSCRIPT
-
-chmod a+x /tmp/rootscript.sh
-/tmp/rootscript.sh
-rm -rf /tmp/rootscript.sh
-
-rm -rf /tmp/rootscript.sh
-cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
-install -v -m755 -d /usr/share/doc/mplayer-1.4 &&
-install -v -m644    DOCS/HTML/en/* \
-                    /usr/share/doc/mplayer-1.4
-ENDOFROOTSCRIPT
-
-chmod a+x /tmp/rootscript.sh
-/tmp/rootscript.sh
-rm -rf /tmp/rootscript.sh
-
-rm -rf /tmp/rootscript.sh
-cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
-install -v -m644 etc/codecs.conf /etc/mplayer
-ENDOFROOTSCRIPT
-
-chmod a+x /tmp/rootscript.sh
-/tmp/rootscript.sh
-rm -rf /tmp/rootscript.sh
-
-rm -rf /tmp/rootscript.sh
-cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
-install -v -m644 etc/*.conf /etc/mplayer
-ENDOFROOTSCRIPT
-
-chmod a+x /tmp/rootscript.sh
-/tmp/rootscript.sh
-rm -rf /tmp/rootscript.sh
-
-rm -rf /tmp/rootscript.sh
-cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
-tar -xvf  ../Clearlooks-2.0.tar.bz2 \
-    -C    /usr/share/mplayer/skins &&
-ln  -sfvn Clearlooks /usr/share/mplayer/skins/default
-ENDOFROOTSCRIPT
-
-chmod a+x /tmp/rootscript.sh
-/tmp/rootscript.sh
-rm -rf /tmp/rootscript.sh
-
-rm -rf /tmp/rootscript.sh
-cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
-gtk-update-icon-cache -qtf /usr/share/icons/hicolor &&
-update-desktop-database -q
 ENDOFROOTSCRIPT
 
 chmod a+x /tmp/rootscript.sh

@@ -10,8 +10,8 @@ set +h
 #REQ:babl
 #REQ:json-glib
 #REQ:gobject-introspection
-#REQ:python-modules#pygments
-#REQ:python-modules#pygobject3
+#REQ:python-pygments
+#REQ:python-pygobject3
 
 
 cd $SOURCE_DIR

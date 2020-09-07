@@ -15,7 +15,7 @@ set +h
 cd $SOURCE_DIR
 
 NAME=lvm2
-#VERSION=2.03.10
+VERSION=2.03.10
 URL=https://sourceware.org/ftp/lvm2/LVM2.2.03.10.tgz
 SECTION="File Systems and Disk Management"
 DESCRIPTION="The LVM2 package is a set of tools that manage logical partitions. It allows spanning of file systems across multiple physical disks and disk partitions and provides for dynamic growing or shrinking of logical partitions, mirroring and low storage footprint snapshots."

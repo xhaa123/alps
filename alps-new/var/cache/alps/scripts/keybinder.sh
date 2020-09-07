@@ -9,7 +9,7 @@ set +h
 
 #REQ:gtk2
 #REQ:gobject-introspection
-#REQ:python-modules#pygtk
+#REQ:python-pygtk
 
 
 cd $SOURCE_DIR

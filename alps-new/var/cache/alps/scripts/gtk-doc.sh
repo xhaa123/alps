@@ -11,7 +11,7 @@ set +h
 #REQ:docbook-xsl
 #REQ:itstool
 #REQ:libxslt
-#REQ:python-modules#pygments
+#REQ:python-pygments
 
 
 cd $SOURCE_DIR

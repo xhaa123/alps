@@ -9,9 +9,9 @@ set +h
 
 #REQ:x7lib
 #REQ:libdrm
-#REQ:python-modules#Mako
-#REQ:x7driver#libva
-#REQ:x7driver#libvdpau
+#REQ:python-Mako
+#REQ:libva
+#REQ:libvdpau
 #REQ:llvm
 #REQ:wayland-protocols
 

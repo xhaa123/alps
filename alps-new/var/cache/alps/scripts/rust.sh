@@ -129,6 +129,7 @@ rm -rf /tmp/rootscript.sh
 rm -rf /tmp/rootscript.sh
 cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
 cat >> /etc/ld.so.conf << EOF
+
 # Begin rustc addition
 
 /opt/rustc/lib

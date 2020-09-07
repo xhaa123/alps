@@ -16,7 +16,7 @@ set +h
 #REQ:tepl
 #REQ:gvfs
 #REQ:iso-codes
-#REQ:python-modules#pygobject3
+#REQ:python-pygobject3
 
 
 

@@ -22,6 +22,7 @@ set +h
 #REQ:libpwquality
 #REQ:libseccomp
 #REQ:terminus-font
+#REQ:shadow
 
 
 cd $SOURCE_DIR

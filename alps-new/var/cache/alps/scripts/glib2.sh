@@ -9,7 +9,6 @@ set +h
 
 #REQ:libxslt
 #REQ:pcre
-#REQ:gobject-introspection
 
 
 cd $SOURCE_DIR

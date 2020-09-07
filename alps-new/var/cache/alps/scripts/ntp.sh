@@ -7,7 +7,7 @@ set +h
 . /var/lib/alps/functions
 . /etc/alps/directories.conf
 
-#REQ:perl-modules#perl-io-socket-ssl
+#REQ:perl-io-socket-ssl
 
 
 cd $SOURCE_DIR

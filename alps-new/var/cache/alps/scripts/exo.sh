@@ -10,7 +10,7 @@ set +h
 #REQ:gtk3
 #REQ:libxfce4ui
 #REQ:libxfce4util
-#REQ:perl-modules#perl-uri
+#REQ:perl-uri
 #REQ:gtk-doc
 
 

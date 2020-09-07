@@ -8,6 +8,15 @@ set +h
 . /etc/alps/directories.conf
 
 #REQ:x7lib
+#REQ:libevdev
+#REQ:xf86-input-evdev
+#REQ:libinput
+#REQ:xf86-input-libinput
+#REQ:xf86-input-synaptics
+#REQ:xf86-video-intel
+#REQ:libva
+#REQ:libvdpau
+#REQ:libvdpau-va-gl
 #REQ:twm
 #REQ:xclock
 #REQ:xterm

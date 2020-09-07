@@ -120,7 +120,7 @@ set -e
 set +h
 
 
-. /etc/apk/apk.conf
+. /etc/alps/alps.conf
 
 pushd $SOURCE_DIR
   wget -nc http://www.linuxfromscratch.org/blfs/downloads/systemd/blfs-systemd-units-20200415.tar.xz

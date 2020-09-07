@@ -43,6 +43,14 @@ fi
 
 echo $USER > /tmp/currentuser
 
+if ! grep -ri "/opt/qt5/lib" /etc/ld.so.conf &> /dev/null; then
+        echo "/opt/qt5/lib" | tee -a /etc/ld.so.conf
+        ldconfig
+fi
+
+ldconfig
+. /etc/profile.d/qt5.sh
+
 TPUT=/bin/true ./configure --prefix=/usr \
                            --with-buildstamp="BLFS" &&
 make

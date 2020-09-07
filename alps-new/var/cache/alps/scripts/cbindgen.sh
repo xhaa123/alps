@@ -37,6 +37,14 @@ fi
 
 echo $USER > /tmp/currentuser
 
+if ! grep -ri "/opt/rustc/lib" /etc/ld.so.conf &> /dev/null; then
+        echo "/opt/rustc/lib" | tee -a /etc/ld.so.conf
+        ldconfig
+fi
+
+ldconfig
+. /etc/profile.d/rustc.sh
+
 cargo build --release
 
 rm -rf /tmp/rootscript.sh

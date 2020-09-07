@@ -10,7 +10,7 @@ set +h
 #REQ:yasm
 #REQ:gtk2
 #REQ:gtk3
-#REQ:x7driver#libvdpau-va-gl
+#REQ:libvdpau-va-gl
 
 
 cd $SOURCE_DIR

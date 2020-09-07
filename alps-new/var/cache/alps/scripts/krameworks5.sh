@@ -20,7 +20,7 @@ set +h
 #REQ:lmdb
 #REQ:phonon
 #REQ:shared-mime-info
-#REQ:perl-modules#perl-uri
+#REQ:perl-uri
 #REQ:wget
 #REQ:aspell
 #REQ:avahi
@@ -31,9 +31,8 @@ set +h
 #REQ:bluez
 #REQ:ModemManager
 #REQ:noto-fonts
-#REQ:oxygen-fonts
-#REQ:python-modules#Jinja2
-#REQ:python-modules#PyYAML
+#REQ:python-Jinja2
+#REQ:python-PyYAML
 #REQ:jasper
 #REQ:mitkrb
 #REQ:udisks2
@@ -67,7 +66,19 @@ fi
 
 echo $USER > /tmp/currentuser
 
-url=http://download.kde.org/stable/frameworks/5.70/
+if ! grep -ri "/opt/qt5/lib" /etc/ld.so.conf &> /dev/null; then
+        echo "/opt/qt5/lib" | tee -a /etc/ld.so.conf
+        ldconfig
+fi
+
+ldconfig
+. /etc/profile.d/qt5.sh
+
+export QT5DIR=/opt/qt5
+export KF5_PREFIX=/usr
+
+#url=http://download.kde.org/stable/frameworks/5.70/
+url=http://mirrors.ustc.edu.cn/kde/stable/frameworks/5.70/
 
 cat > frameworks-5.70.0.md5 << "EOF"
 0662c42c9956ff85d5677d01b2be54ed  attica-5.70.0.tar.xz
@@ -187,8 +198,9 @@ while read -r line; do
           src/server/xdgoutput_interface.cpp ;;
       esac  
 
-      mkdir build
-      cd    build
+      mkdir krameworks5-build
+      cd    krameworks5-build
+      pwd
 
       cmake -DCMAKE_INSTALL_PREFIX=$KF5_PREFIX \
             -DCMAKE_PREFIX_PATH=$QT5DIR        \
@@ -196,26 +208,11 @@ while read -r line; do
             -DBUILD_TESTING=OFF                \
             -Wno-dev ..
       make
-      rm -rf /tmp/rootscript.sh
-      cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
-make install
-ENDOFROOTSCRIPT
-
-      chmod a+x /tmp/rootscript.sh
-      /tmp/rootscript.sh
-      rm -rf /tmp/rootscript.sh
+      make install
     popd
 
-  rm -rf /tmp/rootscript.sh
-  cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
-rm -rf $packagedir
-/sbin/ldconfig
-ENDOFROOTSCRIPT
-
-  chmod a+x /tmp/rootscript.sh
-  /tmp/rootscript.sh
-  rm -rf /tmp/rootscript.sh
-  /sbin/ldconfig
+    rm -rf $packagedir
+    /sbin/ldconfig
 
   echo $file >> /tmp/kframeworks-done
 
@@ -225,14 +222,3 @@ done < frameworks-5.70.0.md5
 if [ ! -z $URL ]; then cd $SOURCE_DIR && cleanup "$NAME" "$DIRECTORY"; fi
 
 register_installed "$NAME" "$VERSION" "$INSTALLED_LIST"
-
- 
-
-rm -rf /tmp/rootscript.sh
-cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
-make install
-ENDOFROOTSCRIPT
-
-chmod a+x /tmp/rootscript.sh
-/tmp/rootscript.sh
-rm -rf /tmp/rootscript.sh

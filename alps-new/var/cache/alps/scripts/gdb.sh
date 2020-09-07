@@ -7,7 +7,7 @@ set +h
 . /var/lib/alps/functions
 . /etc/alps/directories.conf
 
-#REQ:python-modules#six
+#REQ:python-six
 
 
 cd $SOURCE_DIR

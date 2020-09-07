@@ -16,7 +16,7 @@ set +h
 #REQ:libmypaint
 #REQ:librsvg
 #REQ:libtiff
-#REQ:python-modules#libxml2py2
+#REQ:python-libxml2py2
 #REQ:lcms2
 #REQ:mypaint-brushes
 #REQ:poppler
@@ -25,7 +25,7 @@ set +h
 #REQ:gvfs
 #REQ:iso-codes
 #REQ:libgudev
-#REQ:python-modules#pygtk
+#REQ:python-pygtk
 #REQ:xdg-utils
 
 

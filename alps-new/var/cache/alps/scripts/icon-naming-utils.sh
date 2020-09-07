@@ -7,7 +7,7 @@ set +h
 . /var/lib/alps/functions
 . /etc/alps/directories.conf
 
-#REQ:perl-modules#perl-xml-simple
+#REQ:perl-xml-simple
 
 cd $SOURCE_DIR
 

@@ -8,8 +8,8 @@ set +h
 . /etc/alps/directories.conf
 
 #REQ:cmake
-#REQ:python-modules#sphinx
-#REQ:python-modules#recommonmark
+#REQ:python-sphinx
+#REQ:python-recommonmark
 
 
 

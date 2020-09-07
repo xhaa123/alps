@@ -7,7 +7,7 @@ set +h
 . /var/lib/alps/functions
 . /etc/alps/directories.conf
 
-#REQ:perl-modules#perl-archive-zip
+#REQ:perl-archive-zip
 #REQ:unzip
 #REQ:wget
 #REQ:which
@@ -33,7 +33,7 @@ set +h
 #REQ:librsvg
 #REQ:libxml2
 #REQ:libxslt
-#REQ:python-modules#lxml
+#REQ:python-lxml
 #REQ:mesa
 #REQ:neon
 #REQ:nss
