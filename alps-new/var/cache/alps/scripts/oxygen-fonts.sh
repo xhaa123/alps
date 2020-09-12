@@ -8,6 +8,7 @@ set +h
 . /etc/alps/directories.conf
 
 #REQ:cmake
+#REQ:fontforge
 #REQ:qt5
 
 cd $SOURCE_DIR
